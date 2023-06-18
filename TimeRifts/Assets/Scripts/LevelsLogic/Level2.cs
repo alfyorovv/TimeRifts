@@ -21,18 +21,18 @@ public class Level2 : MonoBehaviour
         if (timeController.currentTime == 0)
         {
             wall.SetActive(true);
-            hintText.text = "Странно. Может, в будущем эту стену снесут?";
+            hintText.text = "Здесь стоит волк,может подождать когда он уйдет?";
         }
 
         else if (timeController.currentTime == 1)
         {
             wall.SetActive(true);
-            hintText.text = "Снова в прошлое?";
+            hintText.text = "Здесь стоит волк,может подождать когда он уйдет?";
         }
         else
         {
             wall.SetActive(false);
-            hintText.text = "Стена правда была лишней и ее снесли";
+            hintText.text = "Вышло! Волк ушел спать!";
         }
 
 
