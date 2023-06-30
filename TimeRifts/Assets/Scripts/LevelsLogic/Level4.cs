@@ -21,18 +21,18 @@ public class Level4 : MonoBehaviour
         if (timeController.currentTime == 0)
         {
             water.SetActive(true);
-            hintText.text = "Здесь стоит волк,может подождать когда он уйдет?";
+            hintText.text = "Воду не переплыть.";
         }
 
         else if (timeController.currentTime == 1)
         {
             water.SetActive(true);
-            hintText.text = "Здесь стоит волк,может подождать когда он уйдет?";
+            hintText.text = "Воду не переплыть.";
         }
         else
         {
             water.SetActive(false);
-            hintText.text = "Вышло! Волк ушел спать!";
+            hintText.text = "Вода высохла из-за жары!";
         }
 
 

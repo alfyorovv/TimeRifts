@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    public GameObject camera;
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpSpeed = 5f;
 
     private Rigidbody2D rb;
-
     private bool isGrounded = true;
+    private bool locationState = false; //false - location 1, true - location 2  !!!!!!!!!!!!!!!REFACTORING REQUIERED!!!!!!!!!!!!!!!!
+
+
 
 
     void Awake()
@@ -69,6 +73,33 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = false;
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ladder" && Input.GetKey(KeyCode.W))
+        {
+            Debug.Log("Ladder");
+            rb.velocity = new Vector2(0,8);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.gameObject.tag == "ChangeLocationTrigger" && !locationState)
+        {
+            camera.transform.position -= new Vector3(0, 10.3f, 0);
+            locationState = !locationState;
+            collision.gameObject.transform.position = new Vector3(10.4f, -4.6f, -345.9f);
+
+        }
+        else if (collision.gameObject.tag == "ChangeLocationTrigger" && locationState)
+        {
+            camera.transform.position += new Vector3(0, 10.3f, 0);
+            locationState = !locationState;
+            collision.gameObject.transform.position = new Vector3(3.8f, -7.3f, -345.9f);
         }
     }
 }
