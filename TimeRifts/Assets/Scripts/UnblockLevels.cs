@@ -9,7 +9,7 @@ public class UnblockLevels : MonoBehaviour
 
     void Start()
     {
-       // PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
 
         for (int i = 0; i < levelsButtons.Length; i++) 
         {
